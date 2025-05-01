@@ -1,0 +1,12 @@
+﻿namespace AStar.Dev.Images.Api.Client.Sdk.Models;
+
+/// <summary>
+///     The <see cref="NotFound" /> class that can be used to supply an image for the "not found" event
+/// </summary>
+public static class NotFound
+{
+    /// <summary>
+    ///     Gets the <see cref="byte" /> array representing the "not found" image
+    /// </summary>
+    public static Stream Image => File.OpenRead("/app/wwwroot/assets/404.jpg");
+}
