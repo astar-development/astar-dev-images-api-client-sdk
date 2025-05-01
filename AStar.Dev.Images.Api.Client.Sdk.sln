@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0104382-2842-42B3-ADCF-FA9A94CE7732}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E8DD6553-D178-4E4C-AAC1-86F7B8650079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.Dev.Images.Api.Client.Sdk", "src\AStar.Dev.Images.Api.Client.Sdk\AStar.Dev.Images.Api.Client.Sdk.csproj", "{E2ADBC6E-5FC7-441B-BA5A-7A3B577E59FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.Dev.Images.Api.Client.Sdk.Tests.Unit", "test\AStar.Dev.Images.Api.Client.Sdk.Tests.Unit\AStar.Dev.Images.Api.Client.Sdk.Tests.Unit.csproj", "{5628F4C2-CF33-438F-A7C9-B089D9D0CFEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4D04E31-CEBE-456F-BE91-5975F08F6368}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{D5B334A2-E066-4BB4-AA04-8C11ACE82B6C}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E2ADBC6E-5FC7-441B-BA5A-7A3B577E59FC} = {A0104382-2842-42B3-ADCF-FA9A94CE7732}
+		{5628F4C2-CF33-438F-A7C9-B089D9D0CFEE} = {E8DD6553-D178-4E4C-AAC1-86F7B8650079}
+		{D5B334A2-E066-4BB4-AA04-8C11ACE82B6C} = {C4D04E31-CEBE-456F-BE91-5975F08F6368}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2ADBC6E-5FC7-441B-BA5A-7A3B577E59FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2ADBC6E-5FC7-441B-BA5A-7A3B577E59FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2ADBC6E-5FC7-441B-BA5A-7A3B577E59FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2ADBC6E-5FC7-441B-BA5A-7A3B577E59FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5628F4C2-CF33-438F-A7C9-B089D9D0CFEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5628F4C2-CF33-438F-A7C9-B089D9D0CFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5628F4C2-CF33-438F-A7C9-B089D9D0CFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5628F4C2-CF33-438F-A7C9-B089D9D0CFEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
