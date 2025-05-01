@@ -36,7 +36,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\AStar.Dev.Images.Api.Client.Sdk\AStar.Dev.Images.Api.Client.Sdk.csproj" />
+        <ProjectReference Include="..\..\src\AStar.Dev.Images.Api.Client.Sdk\AStar.Dev.Images.Api.Client.Sdk.csproj"/>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

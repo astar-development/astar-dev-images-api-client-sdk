@@ -1,9 +1,7 @@
-using AStar.Dev.Api.HealthChecks;
 using AStar.Dev.Images.Api.Client.Sdk.Helpers;
 using AStar.Dev.Images.Api.Client.Sdk.ImagesApi;
 using AStar.Dev.Images.Api.Client.Sdk.MockMessageHandlers;
 using JetBrains.Annotations;
-using Microsoft.Extensions.Logging.Abstractions;
 
 namespace AStar.Dev.Images.Api.Client.Sdk;
 

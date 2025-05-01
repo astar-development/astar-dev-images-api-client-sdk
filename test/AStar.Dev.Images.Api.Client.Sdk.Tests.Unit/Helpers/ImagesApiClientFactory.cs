@@ -8,7 +8,7 @@ namespace AStar.Dev.Images.Api.Client.Sdk.Helpers;
 
 internal static class ImagesApiClientFactory
 {
-    private                 const string                       IrrelevantUrl = "https://doesnot.matter.com";
+    private                 const string                        IrrelevantUrl = "https://doesnot.matter.com";
     private static readonly       ILoggerAstar<ImagesApiClient> DummyLogger   = Substitute.For<ILoggerAstar<ImagesApiClient>>();
 
     public static ImagesApiClient Create(HttpMessageHandler mockHttpMessageHandler)

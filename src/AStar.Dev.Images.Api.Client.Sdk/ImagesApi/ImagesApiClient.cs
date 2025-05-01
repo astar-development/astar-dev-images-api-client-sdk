@@ -20,7 +20,9 @@ public sealed class ImagesApiClient(HttpClient httpClient, ITokenAcquisition tok
 {
     /// <inheritdoc />
     public async Task<Result<string, HealthStatusResponse>> GetHealthCheckAsync(CancellationToken cancellationToken = new ())
-        => await GetSafelyAsync<HealthStatusResponse>("/health/ready?version=1.0");
+    {
+        return await GetSafelyAsync<HealthStatusResponse>("/health/ready?version=1.0");
+    }
 
     /// <summary>
     /// </summary>
@@ -31,14 +33,14 @@ public sealed class ImagesApiClient(HttpClient httpClient, ITokenAcquisition tok
     [Refactor(1, 1, "Refactor the param: thumbnail as well as the passed value")]
     public async Task<Stream> GetImageAsync(string imagePath, int maximumSizeInPixels, bool thumbnail)
     {
-        var    requestUri = $"image?imagePath={Uri.EscapeDataString(imagePath)}&maximumSizeInPixels={maximumSizeInPixels}&thumbnail={thumbnail}&version=1.0";
-        string token      = await tokenAcquisitionService.GetAccessTokenForUserAsync(["api://54861ab2-fdb0-4e18-a073-c90e7bf9f0c5/ToDoList.Write",]);
+        var requestUri = $"image?imagePath={Uri.EscapeDataString(imagePath)}&maximumSizeInPixels={maximumSizeInPixels}&thumbnail={thumbnail}&version=1.0";
+        var token      = await tokenAcquisitionService.GetAccessTokenForUserAsync(["api://54861ab2-fdb0-4e18-a073-c90e7bf9f0c5/ToDoList.Write"]);
 
         // logger.LogDebug("Token: {Token}", token);
         httpClient.DefaultRequestHeaders.Authorization = new("Bearer", token);
 
         httpClient.Timeout = TimeSpan.FromMinutes(1); // was erroring on 30 seconds
-        HttpResponseMessage response = await httpClient.GetAsync(requestUri);
+        var response = await httpClient.GetAsync(requestUri);
 
         return response.IsSuccessStatusCode
                    ? await response.Content.ReadAsStreamAsync()
@@ -49,20 +51,17 @@ public sealed class ImagesApiClient(HttpClient httpClient, ITokenAcquisition tok
     {
         try
         {
-            logger.LogApiCallStart(Sdk.Constants.ApiName, uri);
+            logger.LogApiCallStart(Constants.ApiName, uri);
             var token = await tokenAcquisitionService.GetAccessTokenForUserAsync(["api://2ca26585-5929-4aae-86a7-a00c3fc2d061/ToDoList.Write"]);
 
             _ = httpClient.AddBearerToken(token);
             var response = await httpClient.GetAsync(uri);
 
-            if (!response.IsSuccessStatusCode)
-            {
-                return logger.ReturnLoggedFailure<TResponse>( Sdk.Constants.ApiName, uri, response.ReasonPhrase ?? response.StatusCode.ToString());
-            }
+            if (!response.IsSuccessStatusCode) return logger.ReturnLoggedFailure<TResponse>( Constants.ApiName, uri, response.ReasonPhrase ?? response.StatusCode.ToString());
 
             var result = (await response.Content.ReadFromJsonAsync<TResponse>(Utilities.Constants.WebDeserialisationSettings))!;
 
-            return logger.ReturnLoggedSuccess(result, Sdk.Constants.ApiName, "uri");
+            return logger.ReturnLoggedSuccess(result, Constants.ApiName, "uri");
         }
         catch (Exception ex)
         {
@@ -74,7 +73,7 @@ public sealed class ImagesApiClient(HttpClient httpClient, ITokenAcquisition tok
 
     private Stream CreateNotFoundMemoryStream(string fileName)
     {
-        logger.LogApiCallWarning(Sdk.Constants.ApiName, "image", $"The {fileName} was not found");
+        logger.LogApiCallWarning(Constants.ApiName, "image", $"The {fileName} was not found");
 
         return NotFound.Image;
     }

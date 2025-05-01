@@ -3,6 +3,8 @@
 public sealed class MockHttpRequestExceptionErrorHttpMessageHandler : HttpMessageHandler
 {
     protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-                                                           CancellationToken  cancellationToken) =>
+                                                           CancellationToken  cancellationToken)
+    {
         throw new HttpRequestException();
+    }
 }
